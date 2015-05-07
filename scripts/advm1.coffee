@@ -17,15 +17,15 @@ module.exports = (robot) ->
     Client = require('ssh2').Client
     conn = new Client
     conn.on('ready', ->
-      console.log "finger #{username}"
       conn.exec "finger #{username}", (err, stream) ->
-        if err 
+        if err
           throw err
         result = undefined
         stream.on('close', (code, signal) ->
           regex = /In real life:\s(.*)/g
-          if result and result.length > 1
-            realname = regex.exec(result)[1]
+          array = regex.exec(result)
+          if array and array.length > 1
+            realname = array[1]
             res.reply "the real name of #{username} is #{realname}"
             conn.end()
           else
