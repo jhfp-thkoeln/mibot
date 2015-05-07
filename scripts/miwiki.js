@@ -1,5 +1,5 @@
 // Description:
-//   Scripts für das Medieninformatik WiMa Team
+//   Scripts für das Medieninformatik Wiki
 //
 // Dependencies:
 //   None
@@ -18,13 +18,13 @@ module.exports = function(robot) {
 		robot.http('https://www.medieninformatik.fh-koeln.de/w/').get()(function(err, res, body){
 			if (!err && res.statusCode == 200) {
 				if (wiki_status == 'down') {
-					robot.messageRoom(wiki_room, 'The wiki is up again 😊!');
+					robot.messageRoom(wiki_room, 'The wiki seems to be up again 😊!');
 					wiki_status = 'up';
 				}
 			}
 			else {
 				if (wiki_status != 'down') {
-					robot.messageRoom(wiki_room, 'The wiki is down 😱!');
+					robot.messageRoom(wiki_room, 'The wiki seems to be down 😱!');
 					wiki_status = 'down';
 				}	
 			}
