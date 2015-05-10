@@ -30,4 +30,4 @@ module.exports = (robot) ->
       if !err and res.statusCode == 200
         msg.reply 'wiki up and running 😊'
       else
-        msg.replay 'wiki down 😱'
+        msg.reply 'wiki down 😱'
