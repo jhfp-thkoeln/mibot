@@ -5,6 +5,7 @@
   "author": "David Bellingroth <spam.dbellingroth@gmail.com>",
   "description": "Ein nützlicher Roboter für die Medieninformatik",
   "dependencies": {
+    "he": "^0.5.0",
     "hubot": "^2.12.0",
     "hubot-diagnostics": "0.0.1",
     "hubot-google-images": "^0.1.4",
@@ -19,6 +20,7 @@
     "hubot-shipit": "^0.2.0",
     "hubot-slack": "^3.3.0",
     "hubot-youtube": "^0.1.2",
+    "node-jsdom": "^3.1.5",
     "ssh2": "^0.4.8"
   },
   "engines": {
