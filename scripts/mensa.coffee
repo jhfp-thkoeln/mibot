@@ -30,7 +30,7 @@ emojilist = [
 ]
 
 module.exports = (robot) ->
-  robot.respond /(hunger|)/i , (res) ->
+  robot.respond /(.*[H|h]unger.*|.*[M|m]ensa.*|.*[E|e]ssen.*)/i , (res) ->
     robot.http('https://kstw.de/KStW/RSS/rssSPP.php?id=25').get() (err, resp, body) ->
       if not err
         data = new xmldoc.XmlDocument(body);
