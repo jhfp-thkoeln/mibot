@@ -27,6 +27,9 @@ emojilist = [
   {word: 'Rind', emoji: '🐮'}
   {word: 'Pilz', emoji: '🍄'}
   {word: 'Lasagne', emoji: '🐎'}
+  {word: 'Pommes', emoji: '🍟'}
+  {word: 'Spaghetti', emoji: '🍝'}
+  {word: 'Brot', emoji: '🍞'}
 ]
 
 module.exports = (robot) ->
@@ -42,13 +45,23 @@ module.exports = (robot) ->
           artikel = window.document.querySelectorAll 'span.artikel'
           descr = window.document.querySelectorAll 'span.descr'
           for a, i in artikel
-            meals.push "#{a.childNodes[0].nodeValue.replace(/\*/g,'')} #{descr[i].childNodes[0].nodeValue.replace(/\*/g,'')}"
+            art = a.childNodes[0].nodeValue.replace(/\*/g,'')
+            desc = ''
+            
+            for node in descr[i].childNodes
+              desc += node.nodeValue.replace(/\*/g,'') if node.nodeType == 3
+
+            if (art == 'Beilagen')
+              meals.push "Und als Beilagen: #{desc}"
+            else
+              meals.push "#{i+1}. #{art} #{desc}"
+
           if meals.length == 0
             res.reply "Heute gibt es nichts zu essen 😕"
           else
             text = "Heute gibt es in der Mensa:"
             for meal, i  in meals
-              text += "\n#{i+1}. #{meal}"
+              text += "\n#{meal}"
               for o in emojilist
                 text += " #{o.emoji}" if meal.toLowerCase().indexOf(o.word.toLowerCase()) != -1
             res.reply text
