@@ -54,7 +54,7 @@ module.exports = (robot) ->
             if (art == 'Beilagen')
               meals.push "Und als Beilagen: #{desc}"
             else
-              meals.push "#{i+1}. #{art} #{desc}"
+              meals.push "• #{art} #{desc}"
 
           if meals.length == 0
             res.reply "Heute gibt es nichts zu essen 😕"
