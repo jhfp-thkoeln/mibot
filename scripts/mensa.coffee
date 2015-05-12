@@ -44,7 +44,7 @@ emojilist = [
   {word: 'Orange', emoji: '🍊'}
   {word: 'Kräuter', emoji: '🌿'}
   {word: 'vegetari', emoji: '🌱'}
-  {word: 'vegetari', emoji: '🐌'}
+  {word: 'Schnecke', emoji: '🐌'}
 
 ]
 
