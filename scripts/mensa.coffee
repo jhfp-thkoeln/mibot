@@ -20,7 +20,6 @@ emojilist = [
   {word: 'Pizza', emoji: '🍕'}
   {word: ' Wein', emoji: '🍷'}
   {word: 'Rotwein', emoji: '🍷'}
-  {word: 'Currywurst', emoji: '🐷'}
   {word: 'Hähnchen', emoji: '🐓'}
   {word: 'Hühner', emoji: '🐓'}
   {word: 'Schwein', emoji: '🐷'}
