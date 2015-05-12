@@ -18,10 +18,12 @@ emojilist = [
   {word: 'Reis', emoji: '🍚'}
   {word: 'Mais', emoji: '🌽'}
   {word: 'Pizza', emoji: '🍕'}
-  {word: 'Wein', emoji: '🍷'}
+  {word: ' Wein', emoji: '🍷'}
+  {word: 'Rotwein', emoji: '🍷'}
   {word: 'Currywurst', emoji: '🐷'}
   {word: 'Hähnchen', emoji: '🐓'}
   {word: 'Hühner', emoji: '🐓'}
+  {word: 'Schwein', emoji: '🐷'}
   {word: 'Pute', emoji: '🐓'}
   {word: 'Fisch', emoji: '🐟'}
   {word: 'Rind', emoji: '🐮'}
@@ -30,6 +32,7 @@ emojilist = [
   {word: 'Pommes', emoji: '🍟'}
   {word: 'Spaghetti', emoji: '🍝'}
   {word: 'Brot', emoji: '🍞'}
+  {word: 'Tomate', emoji: '🍅'}
 ]
 
 module.exports = (robot) ->
