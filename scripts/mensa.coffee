@@ -32,6 +32,20 @@ emojilist = [
   {word: 'Spaghetti', emoji: '🍝'}
   {word: 'Brot', emoji: '🍞'}
   {word: 'Tomate', emoji: '🍅'}
+  {word: 'Tasche', emoji: '👜'}
+  {word: 'Kuchen', emoji: '🍰'}
+  {word: 'Pudding', emoji: '🍮'}
+  {word: 'Banane', emoji: '🍌'}
+  {word: 'Ananas', emoji: '🍍'}
+  {word: 'Apfel', emoji: '🍎'}
+  {word: 'Äpfel', emoji: '🍎'}
+  {word: 'Erdbeer', emoji: '🍓'}
+  {word: 'Kirsch', emoji: '🍒'}
+  {word: 'Orange', emoji: '🍊'}
+  {word: 'Kräuter', emoji: '🌿'}
+  {word: 'vegetari', emoji: '🌱'}
+  {word: 'vegetari', emoji: '🐌'}
+
 ]
 
 module.exports = (robot) ->
