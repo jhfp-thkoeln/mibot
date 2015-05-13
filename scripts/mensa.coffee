@@ -45,7 +45,7 @@ emojilist = [
   {word: 'Kräuter', emoji: '🌿'}
   {word: 'vegetari', emoji: '🌱'}
   {word: 'Schnecke', emoji: '🐌'}
-
+  {word: 'Hawaii', emoji: '🍍'}
 ]
 
 module.exports = (robot) ->
