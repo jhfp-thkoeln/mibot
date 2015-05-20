@@ -17,17 +17,22 @@ module.exports = (robot) ->
     robot.http('https://www.medieninformatik.fh-koeln.de/w/').get() (err, res, body) ->
       if !err and res.statusCode == 200
         if wiki_status == 'down'
-          robot.messageRoom wiki_room, 'The wiki seems to be up again 😊!'
+          robot.messageRoom wiki_room, 'Das Wiki scheint wieder zu funktionieren 😊!'
           wiki_status = 'up'
       else
-        if wiki_status != 'down'
-          robot.messageRoom wiki_room, 'The wiki seems to be down 😱!'
-          wiki_status = 'down'
+        setTimeout((->
+          robot.http('https://www.medieninformatik.fh-koeln.de/w/').get() (err, res, body) ->
+            if err or res.statusCode != 200
+              if wiki_status != 'down'
+                robot.messageRoom wiki_room, 'Das Wiki scheint Probleme zu haben 😱!'
+                wiki_status = 'down'
+        ), 1*60000)
 
-  ), 5 * 60000)
+  ), 10 * 60000)
+
   robot.respond /wiki status/i, (msg) ->
     robot.http('https://www.medieninformatik.fh-koeln.de/w/').get() (err, res, body) ->
       if !err and res.statusCode == 200
-        msg.reply 'wiki up and running 😊'
+        msg.reply 'Das Wiki läuft 😊'
       else
-        msg.reply 'wiki down 😱'
+        msg.reply 'Das Wiki ist down 😱'
