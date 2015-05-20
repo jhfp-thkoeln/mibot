@@ -8,11 +8,11 @@
 #   None
 #
 # Commands:
-#   hubot who is x - fingers x on the advm1 and posts his real life name
+#   hubot wer ist x - fingers x on the advm1 and posts his real life name
 
 
 module.exports = (robot) ->
-  robot.respond /who is (.*)/i, (res) ->
+  robot.respond /wer ist (.*)/i, (res) ->
     username = escape res.match[1]
     Client = require('ssh2').Client
     conn = new Client
@@ -26,10 +26,10 @@ module.exports = (robot) ->
           array = regex.exec(result)
           if array and array.length > 1
             realname = array[1]
-            res.reply "the real name of #{username} is #{realname}"
+            res.reply "#{username} heißt im echten Leben: #{realname}"
             conn.end()
           else
-            res.reply "could not find #{username} on the advm1 server"
+            res.reply "Ich konnte #{username} auf dem advm1-Server leider nicht finden"
         ).on 'data', (data) ->
           result = result + data
     ).connect
