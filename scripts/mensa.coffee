@@ -12,7 +12,7 @@
 
 xmldoc = require 'xmldoc'
 he = require 'he'
-jsdom = require 'node-jsdom'
+jsdom = require 'jsdom-no-contextify'
 
 emojilist = [
   {word: 'Reis', emoji: '🍚'}
@@ -64,7 +64,7 @@ module.exports = (robot) ->
           for a, i in artikel
             art = a.childNodes[0].nodeValue.replace(/\*/g,'')
             desc = ''
-            
+
             for node in descr[i].childNodes
               desc += node.nodeValue.replace(/\*/g,'') if node.nodeType == 3
 
@@ -82,7 +82,3 @@ module.exports = (robot) ->
               for o in emojilist
                 text += " #{o.emoji}" if meal.toLowerCase().indexOf(o.word.toLowerCase()) != -1
             res.reply text
-
-
-
-
