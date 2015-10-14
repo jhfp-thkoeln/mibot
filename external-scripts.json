@@ -10,5 +10,10 @@
   "hubot-rules",
   "hubot-shipit",
   "hubot-youtube",
-  "hubot-tell"
+  "hubot-tell",
+  "hubot-victory",
+  "hubot-cute-me",
+  "hubot-qr",
+  "hubot-calculator",
+  "hubot-motivate"
 ]
