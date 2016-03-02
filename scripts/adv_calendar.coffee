@@ -20,7 +20,7 @@
 adv_calendar = require './adv_calendar/index'
 
 module.exports = (robot) ->
-  robot.respond /termine (.*)/i, (res) ->
+  robot.respond /events (.*)/i, (res) ->
     subcommand = res.match[1]
     
     adv_calendar subcommand, (events_str) -> res.reply events_str
