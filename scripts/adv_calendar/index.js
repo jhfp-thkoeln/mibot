@@ -194,7 +194,7 @@ function filter_events_by_command ( event_list, cmd_str ) {
     }
     
     // events between now and a given timespan
-    matches = cmd_str.match ( /in\s+den\s+nächsten\s+(.*?)\s+(.*)/i );
+    matches = cmd_str.match ( /in\s+den\s+nächsten\s+(.*?)\s+(\w*)/i );
     if ( !filtered_by_time && matches && matches.length > 2 ) {
         
         var zahlen = "ein zwei drei vier fünf sechs sieben acht neun zehn".split ( " " );
