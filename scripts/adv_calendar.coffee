@@ -24,3 +24,6 @@ module.exports = (robot) ->
     subcommand = res.match[1]
     
     adv_calendar subcommand, (events_str) -> res.reply events_str
+  
+  robot.respond /events/i, (res) ->
+    adv_calendar "", (events_str) -> res.reply events_str

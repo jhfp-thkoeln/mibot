@@ -304,7 +304,7 @@ function stringify_events ( event_list, cmd_str ) {
         str_arr = [];
     
     str_arr.push ( "" );
-    str_arr.push ( "Heute ist der "  + date_helper.format ( now, "D.M.y" ) + "!" );
+    str_arr.push ( "Heute ist der "  + date_helper.format ( now, "D. b y" ) + "!" );
     str_arr.push ( "" );
     str_arr.push ( "Gefundene Termine" + ( (cmd_str) ? " für \"" + cmd_str + "\"": "" ) + ":" );
     str_arr.push ( "" );
