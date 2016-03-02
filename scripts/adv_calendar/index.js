@@ -312,7 +312,7 @@ function filter_events_by_command ( event_list, cmd_str ) {
     }
     
     // retunring an empty event list if no filter was used -> unrecognized command
-    if ( !filtered_by_time && !filtered_by_keyword ) {
+    if ( cmd_str.length > 0 && !filtered_by_time && !filtered_by_keyword ) {
         return [];
     }
     
@@ -323,7 +323,7 @@ function filter_events_by_command ( event_list, cmd_str ) {
 function stringify_events ( event_list, cmd_str ) {
 
     if ( event_list.length === 0 ) {
-        return "\nKeine Termine" + ( (cmd_str) ? " für \"" + cmd_str + "\" ": "" ) + " gefunden!\n";
+        return "\nKeine Events" + ( (cmd_str) ? " für \"" + cmd_str + "\" ": "" ) + " gefunden!\n";
     }
 
     var now = new Date(),
@@ -332,7 +332,7 @@ function stringify_events ( event_list, cmd_str ) {
     str_arr.push ( "" );
     str_arr.push ( "Heute ist der "  + date_helper.format ( now, "D. b y" ) + "!" );
     str_arr.push ( "" );
-    str_arr.push ( "Gefundene Termine" + ( (cmd_str) ? " für \"" + cmd_str + "\"": "" ) + ":" );
+    str_arr.push ( "Gefundene Events" + ( (cmd_str) ? " für \"" + cmd_str + "\"": "" ) + ":" );
     str_arr.push ( "" );
 
 
