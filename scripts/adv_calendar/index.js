@@ -301,7 +301,6 @@ function stringify_events ( event_list, cmd_str ) {
     }
 
     var now = new Date(),
-        longest_summary_length = 0,
         str_arr = [];
     
     str_arr.push ( "" );
@@ -309,12 +308,6 @@ function stringify_events ( event_list, cmd_str ) {
     str_arr.push ( "" );
     str_arr.push ( "Gefundene Termine" + ( (cmd_str) ? " für \"" + cmd_str + "\"": "" ) + ":" );
     str_arr.push ( "" );
-
-
-    event_list.forEach ( function ( event ) {
-        if ( event.summary.length > longest_summary_length )
-            longest_summary_length = event.summary.length;
-    } );
 
 
     event_list.forEach ( function ( event ) {
@@ -338,9 +331,7 @@ function stringify_events ( event_list, cmd_str ) {
             
             var enddate_str = date_helper.format ( enddate,   "D. b y" );
 
-            var space = ( new Array ( longest_summary_length - event.summary.length + 2 ) ).join ( "&nbsp;" );
-
-            str = "*" + event.summary + "*" + space + " " + startdate_str + " - " + enddate_str;
+            str = "*" + event.summary + "*  " + startdate_str + " - " + enddate_str;
         }
         else {
             var day_str       = date_helper.format ( startdate, "D. b y" ),
@@ -352,9 +343,7 @@ function stringify_events ( event_list, cmd_str ) {
                 endtime_str   += date_helper.format ( enddate, ":U" );
             }
             
-            var space = ( new Array ( longest_summary_length - event.summary.length + 2 ) ).join ( "&nbsp;" );
-            
-            str = "*" + event.summary + "*" + space + " " + day_str + " von " + starttime_str + "-" + endtime_str + " Uhr";
+            str = "*" + event.summary + "*  " + day_str + " von " + starttime_str + "-" + endtime_str + " Uhr";
         }
 
         str_arr.push ( str );
