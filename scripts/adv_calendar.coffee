@@ -17,7 +17,7 @@
 #   hubot termine zu x - events with summaries similiar to x; can be used in combination with the other commands
 
 
-adv_calendar = require './adv_calendar'
+adv_calendar = require './adv_calendar/index'
 
 module.exports = (robot) ->
   robot.respond /termine (.*)/i, (res) ->

@@ -133,7 +133,6 @@ function filter_events_by_command ( event_list, cmd_str ) {
     
     // tomorrow
     matches = cmd_str.match ( /morgen/i );
-    console.log("tomorrow => ", !!matches);
     if ( matches ) {
         var tomorrow_startdate = calc_date ( "+1d", true, new Date () ),
             tomorrow_enddate   = calc_date ( "+1d", true, tomorrow_startdate );
@@ -157,7 +156,6 @@ function filter_events_by_command ( event_list, cmd_str ) {
     
     // this week
     matches = cmd_str.match ( /(diese|momentane|aktuelle)\s+woche/i );
-    console.log("this week => ", !!matches);
     if ( !filtered_by_time && matches ) {
         var now = new Date ();
         var weekday = now.getDay ();
@@ -178,7 +176,6 @@ function filter_events_by_command ( event_list, cmd_str ) {
     
     // this month
     matches = cmd_str.match ( /(diesen|momentanen|aktuellen)\s+monat/i );
-    console.log("this month => ", !!matches);
     if ( !filtered_by_time && matches ) {
         var now = new Date();
         var weekday = now.getDay ();
@@ -198,7 +195,6 @@ function filter_events_by_command ( event_list, cmd_str ) {
     
     // events between now and a given timespan
     matches = cmd_str.match ( /in\s+den\s+nächsten\s+(.*?)\s+(.*)/i );
-    console.log("now -> timespan => ", !!matches);
     if ( !filtered_by_time && matches && matches.length > 2 ) {
         
         var zahlen = "ein zwei drei vier fünf sechs sieben acht neun zehn".split ( " " );
@@ -243,7 +239,6 @@ function filter_events_by_command ( event_list, cmd_str ) {
     
     // from date to date
     matches = cmd_str.match ( /(vom\s+){0,1}(\d{1,2}\.\d{1,2}\.\d{2,4})\s+bis\s+(zum\s+){0,1}(\d{1,2}\.\d{1,2}\.\d{2,4})/i );
-    console.log("from date to date => ", !!matches);
     if ( !filtered_by_time && matches && matches.length > 4) {
         
         function parse_date ( date_str ) {
@@ -289,7 +284,6 @@ function filter_events_by_command ( event_list, cmd_str ) {
     
     // by keyword
     matches = cmd_str.match ( /zu\s+(\w*)/i );
-    console.log("keyword => ", matches);
     if ( matches && matches.length > 1 ) {
         var keyword = matches[1];
         event_list = events_by_keyword ( event_list, keyword);
