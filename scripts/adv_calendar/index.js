@@ -47,7 +47,7 @@ module.exports = function( cmd, cb ) {
             });
             
             var filtered_events = filter_events_by_command ( event_list, cmd );
-            var result_str = stringify_events ( filtered_events );
+            var result_str = stringify_events ( filtered_events , cmd );
             
             cb ( result_str );
         } );
@@ -338,7 +338,7 @@ function stringify_events ( event_list, cmd_str ) {
             
             var enddate_str = date_helper.format ( enddate,   "D. b y" );
 
-            var space = ( new Array ( longest_summary_length - event.summary.length + 2 ) ).join ( " " );
+            var space = ( new Array ( longest_summary_length - event.summary.length + 2 ) ).join ( "&nbsp;" );
 
             str = "*" + event.summary + "*" + space + " " + startdate_str + " - " + enddate_str;
         }
@@ -352,7 +352,7 @@ function stringify_events ( event_list, cmd_str ) {
                 endtime_str   += date_helper.format ( enddate, ":U" );
             }
             
-            var space = ( new Array ( longest_summary_length - event.summary.length + 2 ) ).join ( " " );
+            var space = ( new Array ( longest_summary_length - event.summary.length + 2 ) ).join ( "&nbsp;" );
             
             str = "*" + event.summary + "*" + space + " " + day_str + " von " + starttime_str + "-" + endtime_str + " Uhr";
         }
