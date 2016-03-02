@@ -22,9 +22,25 @@ var caldav_options = {
 };
 
 
+var event_list_cache = null,
+    last_event_request_time = 0;
+
 
 module.exports = function( cmd, cb ) {
-
+    var now = new Date (),
+        refresh_cache = false;
+    
+    if ( event_list_cache && ((now.getTime () - last_event_request_time) < 5 * 60 * 1000) ) {
+        
+        var filtered_events = filter_events_by_command ( event_list_cache, cmd );
+        var result_str = stringify_events ( filtered_events , cmd );
+            
+        cb ( result_str );
+        
+        return;
+    }
+    
+    
     caldav ( caldav_options, function ( err, ical_events_raw ) {
 
         ical( ical_events_raw, function( err, ical_events ) {
@@ -46,8 +62,12 @@ module.exports = function( cmd, cb ) {
                 };
             });
             
+            event_list_cache = event_list;
+            
             var filtered_events = filter_events_by_command ( event_list, cmd );
             var result_str = stringify_events ( filtered_events , cmd );
+            
+            last_event_request_time = now.getTime ();
             
             cb ( result_str );
         } );
@@ -122,7 +142,7 @@ function events_by_keyword ( event_list, keyword ) {
 function filter_events_by_command ( event_list, cmd_str ) {
     var now = new Date ( ),
         matches = null,
-        filterd_by_keyword = false,
+        filtered_by_keyword = false,
         filtered_by_time   = false;
     
     // remove older events
@@ -288,8 +308,14 @@ function filter_events_by_command ( event_list, cmd_str ) {
         var keyword = matches[1];
         event_list = events_by_keyword ( event_list, keyword);
         
-        filterd_by_keyword = true;
+        filtered_by_keyword = true;
     }
+    
+    // retunring an empty event list if no filter was used -> unrecognized command
+    if ( !filtered_by_time && !filtered_by_keyword ) {
+        return [];
+    }
+    
     
     return event_list;
 }
