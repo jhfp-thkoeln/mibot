@@ -303,9 +303,9 @@ function filter_events_by_command ( event_list, cmd_str ) {
     
     
     // by keyword
-    matches = cmd_str.match ( /betreffend\s+(\w*)/i );
-    if ( matches && matches.length > 1 ) {
-        var keyword = matches[1];
+    matches = cmd_str.match ( /(betreffend|bezüglich|zu)\s+(\w*)/i );
+    if ( matches && matches.length > 2 ) {
+        var keyword = matches[2];
         event_list = events_by_keyword ( event_list, keyword);
         
         filtered_by_keyword = true;
