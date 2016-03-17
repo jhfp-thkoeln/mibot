@@ -28,13 +28,3 @@ module.exports = (robot) ->
   robot.respond /events$/i, (res) ->
     adv_calendar "", (events_str) -> res.reply events_str
 
-  robot.respond /events help/i, (res) ->
-    res.reply """
-*events morgen* - events for tomorrow
-*events aktuell|gerade|jetzt* - current events
-*events diese|momentane|aktuelle woche* - events for this week
-*events diesen|momentanen|aktuellen monat* - events for this month
-*events in den nächsten x wochen|monaten* - events for the next x weeks/months
-*events [vom] <dd>.<mm>.<yyyy> bis [zum] <dd>.<mm>.<yyyy>* - events between two given dates
-*events zu x* - events with summaries similiar to x; can be used in combination with other commands
-"""

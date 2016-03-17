@@ -26,7 +26,26 @@ var event_list_cache = null,
     last_event_request_time = 0;
 
 
-module.exports = function( cmd, cb ) {
+module.exports = function ( cmd, cb ) {
+
+    var matches = cmd.trim().match ( /^help$/ );
+    if ( matches ) {
+        var help_str = 
+            "\n" +
+            "*events morgen* - events for tomorrow\n" +
+            "*events aktuell|gerade|jetzt* - current events\n" +
+            "*events diese|momentane|aktuelle woche* - events for this week\n" +
+            "*events diesen|momentanen|aktuellen monat* - events for this month\n" +
+            "*events in den nächsten x wochen|monaten* - events for the next x weeks/months\n" +
+            "*events [vom] <dd>.<mm>.<yyyy> bis [zum] <dd>.<mm>.<yyyy>* - events between two given dates\n" +
+            "*events zu x* - events with summaries similiar to x; can be used in combination with other commands";
+        
+        cb ( help_str );
+        
+        return;
+    }
+
+
     var now = new Date (),
         refresh_cache = false;
     
